@@ -9,7 +9,6 @@ import ru.gb.SpringHomeWork3.repository.ReaderRepository;
 
 import java.util.NoSuchElementException;
 
-//@RequiredArgsConstructor
 @Service
 public class IssueService {
     private final BookRepository bookRepository;
@@ -45,21 +44,14 @@ public class IssueService {
         return issue;
     }
 
+    public void returnBook(long idBook){
+        issueRepository.returnBook(idBook);
 
+    }
 
     public Issue getIssueById(long id){
         return issueRepository.findById(id);
     }
 
-    public BookRepository getBookRepository() {
-        return bookRepository;
-    }
 
-    public ReaderRepository getReaderRepository() {
-        return readerRepository;
-    }
-
-    public IssueRepository getIssueRepository() {
-        return issueRepository;
-    }
 }

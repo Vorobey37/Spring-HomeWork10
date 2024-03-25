@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.*;
 
 import ru.gb.SpringHomeWork3.entity.Issue;
 import ru.gb.SpringHomeWork3.entity.Reader;
-import ru.gb.SpringHomeWork3.services.IssueService;
 import ru.gb.SpringHomeWork3.services.ReaderService;
 
 import java.util.ArrayList;
@@ -14,11 +13,9 @@ import java.util.List;
 @RequestMapping("/reader")
 public class ReaderController {
     private ReaderService readerService;
-    private IssueService issueService;
 
-    public ReaderController(ReaderService readerService, IssueService issueService) {
+    public ReaderController(ReaderService readerService) {
         this.readerService = readerService;
-        this.issueService = issueService;
     }
 
     @GetMapping()
@@ -45,7 +42,7 @@ public class ReaderController {
     public List<Issue> getAllIssuesForIdReader(@PathVariable long id){
         List<Issue> issues = new ArrayList<>();
 
-        for (Issue issue : issueService.getIssueRepository().getIssueList()) {
+        for (Issue issue : readerService.getAllIssues()) {
             if (issue.getIdReader() == id){
                 issues.add(issue);
             }

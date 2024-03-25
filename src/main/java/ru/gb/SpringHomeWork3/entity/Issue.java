@@ -2,6 +2,8 @@ package ru.gb.SpringHomeWork3.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Issue {
     private static long genId;
@@ -9,9 +11,13 @@ public class Issue {
     private final long idReader;
     private final long idBook;
 
+    private Date getDate;
+    private Date returnDate;
+
     public Issue(long idReader, long idBook) {
         this.idReader = idReader;
         this.idBook = idBook;
+        this.getDate = new Date();
         this.id = genId++;
     }
 
@@ -19,16 +25,25 @@ public class Issue {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Issue{" +
-                "id=" + id +
-                ", idReader=" + idReader +
-                ", idBook=" + idBook +
-                '}';
-    }
 
     public long getIdReader() {
         return idReader;
+    }
+
+
+    public long getIdBook() {
+        return idBook;
+    }
+
+    public Date getGetDate() {
+        return getDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
     }
 }

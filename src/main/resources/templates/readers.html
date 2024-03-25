@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список читателей</title>
+</head>
+<body>
+    <ul>
+        <li th:each="reader: ${readerList}" th:text="${reader}"></li>
+    </ul>
+</body>
+</html>

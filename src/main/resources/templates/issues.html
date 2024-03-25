@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Журнал регистрации выдач</title>
+</head>
+<body>
+    <table>
+            <tr style="border: 1px solid black">
+                <th style="border: 1px solid black">Id Книги</th>
+                <th style="border: 1px solid black">Id Читателя</th>
+                <th style="border: 1px solid black">Когда взял</th>
+                <th style="border: 1px solid black">Когда вернул</th>
+            </tr>
+            <tr th:each="issue: ${table}" style="border: 1px solid black">
+                <td th:text="${issue.getIdBook}" style="border: 1px solid black"></td>
+                <td th:text="${issue.getIdReader}" style="border: 1px solid black"></td>
+                <td th:text="${issue.getGetDate}" style="border: 1px solid black"></td>
+                <td th:text="${issue.getReturnDate}" style="border: 1px solid black"></td>
+            </tr>
+    </table>
+</body>
+</html>
