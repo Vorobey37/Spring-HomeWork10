@@ -1,9 +1,11 @@
 package ru.gb.SpringHomeWork3.entity;
 
+import jakarta.persistence.Entity;
 import lombok.Data;
 
 import java.util.Date;
 
+//@Entity
 @Data
 public class Issue {
     private static long genId;

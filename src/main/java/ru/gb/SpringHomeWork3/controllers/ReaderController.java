@@ -1,9 +1,12 @@
 package ru.gb.SpringHomeWork3.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import ru.gb.SpringHomeWork3.entity.Issue;
 import ru.gb.SpringHomeWork3.entity.Reader;
+import ru.gb.SpringHomeWork3.entity.ReaderEntity;
+import ru.gb.SpringHomeWork3.services.DataBaseReaderService;
 import ru.gb.SpringHomeWork3.services.ReaderService;
 
 import java.util.ArrayList;
@@ -11,12 +14,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reader")
+@RequiredArgsConstructor
 public class ReaderController {
-    private ReaderService readerService;
+    private final ReaderService readerService;
+    private final DataBaseReaderService dataBaseReaderService;
 
-    public ReaderController(ReaderService readerService) {
-        this.readerService = readerService;
-    }
+
 
     @GetMapping()
     public List<Reader> getAllReaders(){
@@ -50,4 +53,15 @@ public class ReaderController {
 
         return issues;
     }
+
+    @GetMapping("/database")
+    public List<ReaderEntity> getAllReadersFromDataBase(){
+        return dataBaseReaderService.getAllReadersFromDataBase();
+    }
+
+    @GetMapping("/database/{id}")
+    public ReaderEntity getReaderByIdFromDataBase(@PathVariable long id){
+        return dataBaseReaderService.getReaderByIdFromDataBase(id);
+    }
+
 }

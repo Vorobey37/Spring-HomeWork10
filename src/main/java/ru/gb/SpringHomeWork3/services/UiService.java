@@ -20,9 +20,9 @@ public class UiService {
         this.readerRepository = readerRepository;
         this.bookRepository = bookRepository;
         this.issueRepository = issueRepository;
-        Thread.sleep(10000L);
+        //Thread.sleep(10000L);
         issueRepository.returnBook(2);
-        Thread.sleep(10000L);
+        //Thread.sleep(10000L);
         issueRepository.returnBook(0);
     }
 

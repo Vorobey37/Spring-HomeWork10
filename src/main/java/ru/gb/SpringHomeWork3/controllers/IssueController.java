@@ -1,12 +1,15 @@
 package ru.gb.SpringHomeWork3.controllers;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ru.gb.SpringHomeWork3.entity.Issue;
+import ru.gb.SpringHomeWork3.entity.IssueEntity;
 import ru.gb.SpringHomeWork3.entity.Reader;
+import ru.gb.SpringHomeWork3.services.DataBaseIssueService;
 import ru.gb.SpringHomeWork3.services.IssueService;
 
 import java.util.List;
@@ -15,12 +18,11 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("issue")
+@RequiredArgsConstructor
 public class IssueController {
-    private IssueService issueService;
+    private final IssueService issueService;
+    private final DataBaseIssueService dataBaseIssueService;
 
-    public IssueController(IssueService issueService) {
-        this.issueService = issueService;
-    }
 
     @PostMapping()
     public ResponseEntity<Issue> issueBook(@RequestBody IssueRequest issueRequest){
@@ -40,9 +42,15 @@ public class IssueController {
         return issueService.getIssueById(id);
     }
 
-
-
-    public IssueService getIssueService() {
-        return issueService;
+    @GetMapping("/database")
+    public List<IssueEntity> getByIdFromDataBase(){
+        return dataBaseIssueService.getAllEntitiesFromDataBase();
     }
+
+    @GetMapping("/database/{id}")
+    public IssueEntity getIssueByIdFromDataBase(@PathVariable long id){
+        return dataBaseIssueService.getIssueByIdFromDataService(id);
+    }
+
+
 }

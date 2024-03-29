@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Spring-HomeWork3
+  datasource:
+    url: jdbc:h2:mem:test
+    username: alexey
+    password:
+    driver-class-name: org.h2.Driver
