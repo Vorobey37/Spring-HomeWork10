@@ -1,6 +1,7 @@
 package ru.gb.SpringHomeWork3.services;
 
 import org.springframework.stereotype.Service;
+import ru.gb.SpringHomeWork3.annotations.Time;
 import ru.gb.SpringHomeWork3.entity.Book;
 import ru.gb.SpringHomeWork3.entity.Issue;
 import ru.gb.SpringHomeWork3.entity.Reader;
@@ -11,6 +12,7 @@ import ru.gb.SpringHomeWork3.repository.ReaderRepository;
 import java.util.List;
 
 @Service
+@Time
 public class UiService {
     private final ReaderRepository readerRepository;
     private final BookRepository bookRepository;
@@ -26,7 +28,8 @@ public class UiService {
         issueRepository.returnBook(0);
     }
 
-    public List<Book> getAllBooks(){
+    public List<Book> getAllBooks() throws InterruptedException {
+        Thread.sleep(2000L);
         return bookRepository.getBookList();
     }
 

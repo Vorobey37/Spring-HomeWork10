@@ -22,7 +22,7 @@ public class UiController {
     }
 
     @GetMapping("books")
-    public String getAllBooks(Model model){
+    public String getAllBooks(Model model) throws InterruptedException {
 
         List<String> bookList = new ArrayList<>();
 
